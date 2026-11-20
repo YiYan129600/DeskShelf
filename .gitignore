@@ -1,0 +1,11 @@
+# Portable engine state is specific to the current Windows user.
+/分区/PecoFence/config/
+/分区/PecoFence/logs/
+/分区/PecoFence/*.pdb
+*.log
+*.dmp
+*.bak
+.vs/
+**/bin/
+**/obj/
+target/

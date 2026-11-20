@@ -1,0 +1,19 @@
+桌屿分区引擎
+
+桌屿在 PecoFence v0.4.0 的基础上修改了 pecofence.exe 和 pecofence-cli.exe，加入自动排列、跟随系统配色、分区悬停显示、壁纸模式和跨显示器分区镜像。上一级目录的 PecoFence-桌屿.patch 完整记录了这些源码改动。PecoFence 及这些改动采用 Apache-2.0。
+
+原项目 https://github.com/DayuanJiang/PecoFence
+上游版本 https://github.com/DayuanJiang/PecoFence/releases/tag/v0.4.0
+
+在 Windows x64 上安装 Git、Rust 1.95.0（MSVC 工具链）、Visual Studio C++ Build Tools 和 Windows SDK。从上游 v0.4.0 源码根目录执行以下命令，将路径替换为补丁文件的实际位置。
+
+    git apply --check "<补丁路径>\PecoFence-桌屿.patch"
+    git apply "<补丁路径>\PecoFence-桌屿.patch"
+    cargo +1.95.0 build --locked --release --target x86_64-pc-windows-msvc -p pecofence
+    cargo +1.95.0 build --locked --release --target x86_64-pc-windows-msvc -p pecofence-cli
+
+两个包分别构建，生成的程序位于 target\x86_64-pc-windows-msvc\release。本分发包构建时还使用 Rust 的 --remap-path-prefix 替换构建环境的绝对路径。
+
+pecofence-watchdog.exe 和 WebView2Loader.dll 来自上游 v0.4.0 的 Windows x64 便携版。原作者及贡献者署名和依赖许可证见本目录的 LICENSE、NOTICE、LICENSE-WebView2Loader.txt 和 THIRD-PARTY-LICENSES.txt。
+
+桌屿壁纸助手.exe 对应上一级目录的 WallpaperTaskbar.cs，由桌屿的 src\build.ps1 构建。
